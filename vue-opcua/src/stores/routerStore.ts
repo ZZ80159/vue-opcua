@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-
-export const useRouterStore = defineStore('router', {
-  state: () => ({
-    isCollapse: true,
-  }),
+import { ref } from 'vue'
+export const useRouterStore = defineStore('router', () => {
+  const isCollapse = ref(true)
+  return { isCollapse }
 })

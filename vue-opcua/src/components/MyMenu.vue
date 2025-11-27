@@ -1,9 +1,5 @@
 <template>
-  <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-    <el-radio-button :value="false">expand</el-radio-button>
-    <el-radio-button :value="true">collapse</el-radio-button>
-  </el-radio-group>
-  <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse">
+  <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="routerStore.isCollapse">
     <el-sub-menu index="1">
       <template #title>
         <el-icon>
@@ -44,7 +40,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { useRouterStore } from '../stores/routerStore'
 import {
   Document,
@@ -54,11 +49,8 @@ import {
 } from '@element-plus/icons-vue'
 
 const routerStore = useRouterStore()
-// 使用computed使isCollapse具有响应性，能够双向绑定到Pinia状态
-const isCollapse = computed({
-  get: () => routerStore.isCollapse,
-  set: (value) => { routerStore.isCollapse = value }
-})
+
+
 
 </script>
 
